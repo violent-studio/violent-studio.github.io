@@ -1,11 +1,205 @@
+<!-- Apfelstrudel Technologien Page. -->
+
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="https://raw.githubusercontent.com/violent-studio/vmedia/main/apfelstrudel_icon_transparent.png">
+
     <title>Apfelstrudel Technologien.</title>
 </head>
+
+<script>
+    console.log("Hello World!");
+
+    // https://stackoverflow.com/a/72502261/15277736
+    {var hasTouchScreen = false;
+    if ("maxTouchPoints" in navigator) { hasTouchScreen = navigator.maxTouchPoints > 0;
+    } else if ("msMaxTouchPoints" in navigator) { hasTouchScreen = navigator.msMaxTouchPoints > 0;
+    } else {
+        var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+        if (mQ && mQ.media === "(pointer:coarse)") { hasTouchScreen = !!mQ.matches;
+        } else if ('orientation' in window) { hasTouchScreen = true; // deprecated, but good fallback
+        } else {
+            // Only as a last resort, fall back to user agent sniffing
+            var UA = navigator.userAgent;
+            hasTouchScreen = (
+                /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+                /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+            );
+        }
+    }
+    if (hasTouchScreen) {
+        let elements = document.getElementsByTagName("*");
+        for(var index=0; index < elements.length; index++) { elements[index].remove(); }
+        alert("Mobiles aren't supported.");
+    }}
+</script>
+
+<style>
+    body {
+        background-color: black;
+
+        margin: 0;
+    }
+
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    .gif_shader {
+        width: 100%;
+        height: 750px;
+
+        object-fit: cover;
+
+        position: relative;
+    }
+
+    .title {
+        font-family: "MedievalSharp", cursive;
+
+        font-size: 50px;
+
+        color: white;
+    }
+
+    .rotating_icon {
+        animation: rotation 5s infinite linear;
+    }
+
+    @keyframes rotation {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(359deg); }
+    }
+
+    .title_img {
+        font-family: "MedievalSharp", cursive;
+
+        font-size: 120px;
+
+        color: white;
+
+        left: 0;
+
+        position: absolute;
+
+        text-align: center;
+
+        top: 325px;
+
+        width: 100%;
+    }
+
+    .text_ {
+        font-family: "MedievalSharp", cursive;
+
+        font-size: 25px;
+
+        color: white;
+    }
+
+    .cbutton {
+        background-color: transparent;
+
+        color: white;
+
+        font-family: "MedievalSharp", cursive;
+
+        font-size: 25px;
+
+        border: 0px;
+
+        border-radius: 5px;
+
+        transition: 0.5s;
+    }
+
+    .cbutton:hover {
+        background-color: rgba(186, 186, 186, 0.5);
+
+        transition: 0.5s;
+    }
+
+    .cbutton:active {
+        background-color: rgba(255, 255, 255, 0.5);
+
+        transition: 0.01s;
+    }
+
+    .link {
+        color: white;
+    }
+</style>
+
 <body>
-    In development.
+    <img src="https://github.com/Apfelstrudel-Technologien/rlOSScanlines/assets/94743980/bbffc77e-633c-482c-9fe8-b808dc1708b9" class="gif_shader">
+
+    <span class="title_img"><img src="https://raw.githubusercontent.com/violent-studio/vmedia/main/apfelstrudel_icon_transparent.png" width="100" class="rotating_icon"> Apfelstrudel Technologien</span>
+
+    <div style="background-color: rgb(64, 64, 86); text-align: center;"><br>
+        <h2 class="title">About Us</h2>
+
+        <p class="text_">Apfelstrudel Technologien focuses on designing and implementing solutions for Violent Studio, and sharing them with world. Group was founded in June 2024 by Violent Studio and based in Ukraine & Norway. We need new members and if you would like to be one of them how to contact us you can find out below. We look forward to welcoming you to our free and pleasant team! We develop shaders, utilities, software, games, primarily in C or Java programming language. Things we develop have MIT License and are free to use for everyone, unlike Violent Studio projects (See <a href="https://github.com/violent-studio/vlicense/blob/main/LICENSE" class="link">VLicense</a>).<br><br>Apfelstrudel Techonologien products published recently (list may be updated):</p>
+
+        <div style="display: block; text-align: center;">
+            <div style="display: inline-block; margin: 0 1%;">
+                <img src="vignette.gif" width="500" style="border-radius: 5%;">
+
+                <br><span class="text_">Raylib 2D shader: <a href="https://github.com/Apfelstrudel-Technologien/raylibVignette" class="link">Vignette</a>.</span>
+            </div>
+
+            <div style="display: inline-block; margin: 0 1%;">
+                <img src="https://github.com/Apfelstrudel-Technologien/rlPPGlitch/assets/94743980/39f3f349-ce38-49be-928c-b489285a8f24" style="border-radius: 10%;" width="600">
+
+                <br><span class="text_">Raylib post-processing shader: <a href="https://github.com/Apfelstrudel-Technologien/rlPPGlitch" class="link">Glitch</a>.</span>
+            </div>
+
+            <div style="display: inline-block; margin: 0 1%;">
+                <img src="https://github.com/Apfelstrudel-Technologien/rlOSScanlines/assets/94743980/97e31550-1d50-41a8-ab55-7c601bde2f05" width="670" style="border-radius: 10%;">
+    
+                <br><span class="text_">Raylib object shader: <a href="https://github.com/Apfelstrudel-Technologien/rlOSScanlines" class="link">Scanlines</a>.</span>
+            </div>
+        </div>
+    <br></div>
+
+    <div style="background-color: rgb(64, 64, 128); text-align: center;"><br>
+        <h2 class="title">Connect with us</h2>
+
+        <p class="text_">
+            <button class="cbutton" onclick="window.location.replace('https://violent-studio.github.io/')">Violent Studio Page</button>
+
+            /
+
+            <button class="cbutton" onclick="window.location.replace('https://github.com/Violent-Studio')">Violent Studio Github</button>
+
+            /
+
+            <button class="cbutton" onclick="window.location.replace('https://violent-studio.github.io/apfelstrudel.html')">Apfelstrudel Technologien Page</button>
+
+            /
+
+            <button class="cbutton" onclick="window.location.replace('https://github.com/Apfelstrudel-Technologien')">Apfelstrudel Technologien Github</button>
+
+            /
+
+            <button class="cbutton" onclick="window.location.replace('https://discord.com/users/vertexxo_')">Discord</button>
+
+            /
+
+            <button class="cbutton" onclick="window.location.replace('mailto:violent.studio0@gmail.com')">Mail</button>
+        </p>
+    <br></div>
 </body>
+
 </html>
