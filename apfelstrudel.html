@@ -113,6 +113,20 @@
         color: white;
     }
 
+    .showcase_img {
+        border-radius: 5%;
+
+        transition: 1s;
+    }
+
+    .showcase_img:hover {
+        border-radius: 1%;
+
+        filter: drop-shadow(rgb(32, 32, 32) 0px 0px 16px);
+
+        transition: 0.5s;
+    }
+
     .cbutton {
         background-color: transparent;
 
@@ -128,7 +142,7 @@
 
         border-radius: 5px;
 
-        transition: 0.5s;
+        transition: 0.2s;
     }
 
     .cbutton:hover {
@@ -136,7 +150,7 @@
 
         font-weight: 100;
 
-        transition: 0.5s;
+        transition: 0.2s;
     }
 
     .cbutton:active {
@@ -152,7 +166,7 @@
 
         font-weight: 600;
 
-        transition: 0.5s;
+        transition: 0.3s;
     }
 
     .link:hover {
@@ -160,7 +174,7 @@
 
         text-decoration: none;
 
-        transition: 0.5s;
+        transition: 0.3s;
     }
 </style>
 
@@ -172,31 +186,31 @@
     <div style="background-color: rgb(64, 64, 86); text-align: center;"><br>
         <h2 class="title">About Us</h2>
 
-        <p class="text_">Apfelstrudel Technologien focuses on designing and implementing solutions for Violent Studio, and sharing them with world. Group was founded in June 2024 by Violent Studio and based in Ukraine & Norway. We need new members and if you would like to be one of them how to contact us you can find out below. We look forward to welcoming you to our free and pleasant team! We develop shaders, utilities, software, games, primarily in C or Java programming language. Things we develop have MIT License and are free to use for everyone, unlike Violent Studio projects (See <a href="https://github.com/violent-studio/vlicense/blob/main/LICENSE" class="link">VLicense</a>).<br><br>Apfelstrudel Techonologien products published recently (list may be updated):</p>
+        <p class="text_">Apfelstrudel Technologien focuses on designing and implementing solutions for Violent Studio, and sharing them with world. Group was founded in June 2024 by Violent Studio and based in Ukraine & Norway. We need new members and if you would like to be one of them how to contact us you can find out below. We look forward to welcoming you to our free and pleasant team! We develop shaders, utilities, software, games, primarily in <i>C</i> or <i>Java</i>. Things we develop have MIT License and are free to use for everyone, unlike Violent Studio projects (See <a href="https://github.com/violent-studio/vlicense/blob/main/LICENSE" class="link">VLicense</a>).<br><br>Apfelstrudel Techonologien products published recently (list may be updated):</p>
 
         <div style="display: block; text-align: center;">
             <div style="display: inline-block; margin: 0 1%;">
-                <img src="vignette.gif" width="500" style="border-radius: 5%;">
+                <img src="vignette.gif" width="500" class="showcase_img">
 
-                <br><span class="text_">Raylib 2D shader: <a href="https://github.com/Apfelstrudel-Technologien/raylibVignette" class="link">Vignette</a>.</span>
+                <br><span class="text_">Raylib 2D shader: <a href="https://github.com/Apfelstrudel-Technologien/raylibVignette" class="link">Vignette</a></span>
             </div>
 
             <div style="display: inline-block; margin: 0 1%;">
-                <img src="https://github.com/Apfelstrudel-Technologien/rlPPGlitch/assets/94743980/39f3f349-ce38-49be-928c-b489285a8f24" style="border-radius: 10%;" width="600">
+                <img src="https://github.com/Apfelstrudel-Technologien/rlPPGlitch/assets/94743980/39f3f349-ce38-49be-928c-b489285a8f24" class="showcase_img" width="600">
 
-                <br><span class="text_">Raylib post-processing shader: <a href="https://github.com/Apfelstrudel-Technologien/rlPPGlitch" class="link">Glitch</a>.</span>
+                <br><span class="text_">Raylib post-processing shader: <a href="https://github.com/Apfelstrudel-Technologien/rlPPGlitch" class="link">Glitch</a></span>
             </div>
 
             <div style="display: inline-block; margin: 0 1%;">
-                <img src="https://github.com/Apfelstrudel-Technologien/rlOSScanlines/assets/94743980/97e31550-1d50-41a8-ab55-7c601bde2f05" width="675" style="border-radius: 10%;">
+                <img src="https://github.com/Apfelstrudel-Technologien/rlOSScanlines/assets/94743980/97e31550-1d50-41a8-ab55-7c601bde2f05" width="675" class="showcase_img">
     
-                <br><span class="text_">Raylib object shader: <a href="https://github.com/Apfelstrudel-Technologien/rlOSScanlines" class="link">Scanlines</a>.</span>
+                <br><span class="text_">Raylib object shader: <a href="https://github.com/Apfelstrudel-Technologien/rlOSScanlines" class="link">Scanlines</a></span>
             </div>
         </div>
     <br></div>
 
     <div style="background-color: rgb(64, 64, 128); text-align: center;"><br>
-        <h2 class="title">Connect with us</h2>
+        <h2 class="title">Connect With Us</h2>
 
         <p class="text_">
             <button class="cbutton" onclick="window.location.replace('https://violent-studio.github.io/')">Violent Studio Page</button>
