@@ -8,37 +8,281 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Violent Studio - VSDK.</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/ashes.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="res/hack/hack-subset.css">
+    <link rel="stylesheet" href="res/hack/hack.css">
 </head>
 
 <script>
-    console.log("Hello World!");
+    console.log("Welcome!");
+
+    hljs.highlightAll();
+
+    function loadDoc(doc) {
+        fetch(`dynamic/vsdk.${doc}.html`).then(response => response.text()).then(data => { document.getElementById("doc").innerHTML = data; hljs.highlightAll(); }).catch(error => console.log(error));
+    }
+
+    loadDoc("about");
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    {var hasTouchScreen = false;
+    if ("maxTouchPoints" in navigator) { hasTouchScreen = navigator.maxTouchPoints > 0;
+    } else if ("msMaxTouchPoints" in navigator) { hasTouchScreen = navigator.msMaxTouchPoints > 0;
+    } else {var mQ = window.matchMedia && matchMedia("(pointer:coarse)");if (mQ && mQ.media === "(pointer:coarse)") { hasTouchScreen = !!mQ.matches;
+        } else if ('orientation' in window) { hasTouchScreen = true;
+        } else {var UA = navigator.userAgent;hasTouchScreen = (/\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||/\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA));}}
+    if (hasTouchScreen) {
+        let elements = document.getElementsByTagName("*");
+        for(var index=0; index < elements.length; index++) { elements[index].remove(); }
+        let p = document.createElement("h1");
+        p.textContent = "Mobiles aren't supported. Sorry! ";
+        p.style = "color: white; background-color: black"
+        let img = document.createElement("img");
+        img.src = "res/java.png";
+        img.width = 30;
+        p.appendChild(img);
+        document.appendChild(p);
+}}
 </script>
 
 <style>
     body {
-        background-color: black;
+        background-color: rgb(32, 32, 32);
 
         color: white;
+
+        font-family: "Red Hat Display", sans-serif;
+
+        padding-left: 305px;
     }
 
-    body::-webkit-scrollbar {
+    ::-webkit-scrollbar {
         display: none;
+    }
+
+    pre > code {
+        font-family: Hack, monospace;
+
+        font-weight: lighter;
+
+        font-size: medium;
+    }
+
+    h1 {
+        font-weight: bolder;
+    }
+
+    .docnavbar {
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        background-color: rgb(44, 44, 44);
+
+        width: 300px;
+        height: 100%;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        overflow: hidden;
+
+        box-shadow: 0 0 10px rgba(24, 24, 24, 0.8);
+
+        transition: 0.5s;
+    }
+
+    .docnavbar:hover {
+        background-color: rgb(36, 36, 36);
+
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
+        transition: 0.5s;
+    }
+
+    .docnavbar_img {
+        width: 300px;
+
+        transition: 0.5s;
+    }
+
+    .docnavbar:hover .docnavbar_img {
+        filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.7));
+
+        transition: 0.5s;
+    }
+
+    .docnavbar_button {
+        color: white;
+
+        font-weight: bold;
+
+        text-decoration: none;
+
+        letter-spacing: 1px;
+
+        display: block;
+
+        padding: 10px 0;
+
+        cursor: pointer;
+
+        transition: 0.5s;
+    }
+
+    .docnavbar_button:hover {
+        color: rgb(255, 80, 80);
+
+        background-color: rgb(64, 64, 64);
+
+        letter-spacing: 5px;
+
+        padding: 15px 0;
+
+        transition: 0.5s;
+    }
+
+    #up-button {
+        background-color: white;
+
+        position: fixed;
+
+        bottom: 20px;
+        right: 20px;
+
+        filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+
+        cursor: pointer;
+
+        font-size: 25px;
+
+        border: 0px solid;
+        border-radius: 5px;
+
+        height: 45px;
+
+        transition: 0.35s;
+    }
+
+    #up-button:hover {
+        background-color: rgba(0, 0, 0, 0);
+
+        filter: drop-shadow(0px 0px 20px rgba(100, 140, 255, 1.0));
+
+        border-radius: 5px;
+
+        font-size: 50px;
+
+        height: 85px;
+
+        transition: 0.35s;
+    }
+
+    .pli {
+        color: red;
+
+        list-style-type: circle;
+    }
+
+    .oli {
+        list-style-type: circle;
+    }
+
+    .oli::marker {
+        color: orange;
+    }
+
+    .jli {
+        font-size: 20px;
+
+        font-style: italic;
+
+        color: darkgrey;
+
+        list-style-image: url("res/java_us.png");
+    }
+
+    .sli {
+        font-size: 20px;
+
+        font-style: italic;
+
+        color: darkgrey;
+
+        list-style-image: url("res/glsl_us.png");
+    }
+
+    .ili {
+        list-style-type: decimal;
+    }
+
+    .code_kwd {
+        color: rgb(232, 232, 232);
+
+        background-color: rgb(16, 16, 16);
+
+        border-radius: 2px;
+
+        font-size: small;
+
+        font-weight: 100;
+
+        font-style: italic;
+    }
+
+    .section_link {
+        color: white;
+
+        cursor: pointer;
+
+        text-decoration: none;
+
+        font-size: 20px;
+    }
+
+    .a_filejump {
+        color: white;
+
+        text-decoration: none;
     }
 </style>
 
 <body>
-    <p align="center"><img src="https://raw.githubusercontent.com/violent-studio/vmedia/main/vsdk.png" width="800"></p>
-    <h3 align="center">VSDK Development Phase: <code>VSDK_V0.0.0.1-ALPHA/DEV_PUBLISH</code>.</h3>
-    <h3 align="center">VSDK Bump Mapping (Youtube).</h3>
-    <p align="center"><a href="https://www.youtube.com/watch?v=HUJ3RxE8DhQ"><img src="http://markdown-videos-api.jorgenkh.no/youtube/HUJ3RxE8DhQ.gif?width=450&height=250&duration=1000" alt="Bump Mapping ALPHA" title="Bump Mapping ALPHA"/></a></p>
+    <div class="docnavbar">
+        <img src="res/vsdk.png" class="docnavbar_img">
 
-    <h3 align="center">VSDK Noise Generator.</h3>
+        <span style="font-size:15px; color: rgb(232, 232, 232);">Violent Studio Software Development Kit</span><br>
 
-    <div style="text-align: center;"><img src="https://github.com/violent-studio/vmedia/blob/main/vsdk/PerlinBillowNoiseImage.png?raw=true" width="300"><img src="https://github.com/violent-studio/vmedia/blob/main/vsdk/PerlinFractalNoiseImage.png?raw=true" width="300"><img src="https://github.com/violent-studio/vmedia/blob/main/vsdk/PerlinNoiseImage.png?raw=true" width="300"><br><img src="https://github.com/violent-studio/vmedia/blob/main/vsdk/PerlinRidgeNoiseImage.png?raw=true" width="300"><img src="https://github.com/violent-studio/vmedia/blob/main/vsdk/PerlinTurbulenceNoiseImage.png?raw=true" width="300"><img src="https://github.com/violent-studio/vmedia/blob/main/vsdk/SimplexBillowNoiseImage.png?raw=true" width="300"><br><img src="https://github.com/violent-studio/vmedia/blob/main/vsdk/SimplexNoiseImage.png?raw=true" width="300"><img src="https://github.com/violent-studio/vmedia/blob/main/vsdk/SimplexRidgeNoiseImage.png?raw=true" width="300"><img src="https://github.com/violent-studio/vmedia/blob/main/vsdk/SimplexTurbulenceNoiseImage.png?raw=true" width="300"></div>
+        <hr>
 
-    <h3 align="center">VSDK Shader Playground.</h3>
+        <a onclick="loadDoc('source')" class="docnavbar_button">Source</a><br>
+        <a onclick="loadDoc('vlib')" class="docnavbar_button">Violent Library</a><br>
+        <a onclick="loadDoc('vendor')" class="docnavbar_button">SDK Vendor</a><br>
+        <a onclick="loadDoc('shaders')" class="docnavbar_button">Shaders</a><br>
+        <a onclick="loadDoc('rutils')" class="docnavbar_button">Runnable Utilities</a><br>
+        <a onclick="loadDoc('examples')" class="docnavbar_button">Examples</a><br>
+        <a onclick="loadDoc('about')" class="docnavbar_button">About</a>
 
-    <p align="center"><img src="https://github.com/violent-studio/vsdk/blob/main/vsdk/r_utilities/shader_playground/utility.png?raw=true" width="600"></p>    
+        <p style="color: rgb(132, 132, 132); font-size: 16px; position: absolute; bottom: 0; left: 5%;">VSDK_V0.0.0.4-ALPHA/DEV_PUBLISH</p>
+    </div>
+
+    <div id="doc"><img src="res/load.gif" width="15"> Loading dynamic page fragment...</div>
+
+    <button id="up-button" onclick="scrollToTop()">🔼</button>
 </body>
 
 </html>

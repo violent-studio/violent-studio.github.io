@@ -1,0 +1,60 @@
+<h2>About</h2>
+Runnable utilities module is ready-to-run utilities for making game design easier. You can test shaders to creating cutscenes via camera.
+
+<ul>
+    <li class="pli"><a href="#shaderplayground" class="a_filejump">Shader Playground</a></li>
+</ul>
+
+<h3 id="shaderplayground">Shader Playground</h3>
+Shader Playground is a utility for creating and testing game shaders, has the ability to load both vertex and fragment shaders, apply your own textures, the object as well as the camera can be customised, as well as you can connect the editor with the shader using a special syntax.<br>
+You can drag & drop shader or texture and editor will automatically load your files. Only <code class="code_kwn">PNG</code>, and <code class="code_kwn">JPG</code> supported.<br>
+On High-DPI devices you have to append <code class="code_kwd">FLAG_WINDOW_HIGHDPI</code> to window flags (line 57).
+
+<div style="text-align: center;">
+    <br><img src="res/ru_sp.png" width="1000" style="border-radius: 10px;">
+
+    <p>1. Reset vertex shader and switch to default Raylib shader.</p>
+    <p>2. Reset fragment shader and switch to default Raylib shader.</p>
+    <p>3. Re-load and apply shader in real time, and parse shader uniforms again.</p>
+    <p>4. Vertex uniforms section. Shader Playground auto-specifies next uniforms: <code class="code_kwd">p_Color</code> (color set on the slider).</p>
+    <p>5. Fragment uniforms section. Shader Playground auto-specifies next uniforms: <code class="code_kwd">p_Color</code> (color set on the slider).</p>
+    <p>6. Parses only fragment uniforms and reloads them in editor.</p>
+    <p>7. Parses only vertex uniforms and reloads them in editor.</p>
+    <p>8. Cube settings section.</p>
+    <p>9. Camera settings section.</p>
+    <p>10. FPS.</p>
+    <p>11. Shader showcase.</p>
+</div>
+
+<h4>Syntax extension</h4>
+Editor provides additional shader syntax parsing:
+
+<h5><i>wave.fs</i></h5>
+<pre><code lang="highlightjs-glsl">#version 330
+
+in vec2 fragTexCoord;
+in vec3 fragNormal;
+in vec3 fragPosition;
+
+out vec4 finalColor;
+
+//p_DefVal=float:1.0
+uniform float cAdd;
+
+//p_DefVal=float:1.0
+uniform float cMult;
+
+vec3 getRainbowColor(float position) {
+    return vec3(abs(sin(position)), abs(sin(position + (1.0 + cAdd) * cMult)), abs(sin(position + (3.0 + cAdd) * cMult)));
+}
+
+void main() {
+    finalColor = vec4(getRainbowColor(fragPosition.y * 2.0 + fragPosition.x + fragPosition.z), 1.0);
+}
+</code></pre>
+
+With <code class="code_kwd">//p_DefVal</code> you can set default value for shader, ie. when shader is loaded in editor uniforms will be automatically loaded and applied.<br><br>
+
+Default values supports next GLSL types: <code class="code_kwd">int</code>, <code class="code_kwd">float</code>, <code class="code_kwd">vec2</code>, <code class="code_kwd">vec3</code>, <code class="code_kwd">vec4</code>, <code class="code_kwd">ivec2</code>, <code class="code_kwd">ivec3</code>, <code class="code_kwd">ivec4</code><br>
+
+WARNING: If you're using vector as default value you have to specify vector without any spaces! EG. <code class="code_kwd">0,0,0</code> (<code class="code_kwd">ivec2</code>).

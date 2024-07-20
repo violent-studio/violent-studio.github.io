@@ -1,0 +1,408 @@
+<h2>About</h2>
+<p>Source is the main part of the VSDK.<br>The module contains the basic benefits of the SDK, and the name of the module speaks for itself: the module must be used in source code.<br>The module contains such technologies as spatial audio, 3D particle simulation, GUI library, Bump-Mapping, and more.</p>
+
+<ul>
+    <li class="pli"><a href="#audio" class="section_link">Audio</a></li>
+    <li class="pli"><a href="#ivui" class="section_link">IVUI</a></li>
+    <li class="pli"><a href="#particles" class="section_link">Particles</a></li>
+    <li class="pli"><a href="#spps" class="section_link">SPPS</a></li>
+    <li class="pli"><a href="#structs" class="section_link">Structures</a></li>
+    <li class="pli"><a href="#utils" class="section_link">Utilities</a></li>
+    <li class="pli"><a href="#vectors" class="section_link">Vectors</a></li>
+    <li class="pli"><a href="#vrender" class="section_link">VRender</a></li>
+</ul>
+
+<h1 id="audio">Audio</h1>
+<p>Audio module, allows you to create customisable spatial audio, and background audio with additional features.</p>
+
+<p>Audio module contains following files:</p>
+<ul>
+    <li class="jli"><code><a href="#ambientaudio" class="a_filejump">AmbientAudio.java</a></code></li>
+    <li class="jli"><code><a href="#spatialaudio" class="a_filejump">SpatialAudio.java</a></code></li>
+    <li class="jli"><code><a href="#spatialaudiodata" class="a_filejump">SpatialAudioData.java</a></code></li>
+</ul>
+
+<h3 id="ambientaudio">Ambient Audio</h3>
+Ambient audio is a type of sound effect that is used to add atmosphere to a game. For example, wind, city noise, rising sound, and more. The AmbientAudio class makes it easy to work with background sound, has fading, etc.
+
+<pre><code lang="highlightjs-java">public class AmbientAudio {
+    public AmbientAudio(String);
+    public void handleAmbient(float, float, float, float);
+    public void handleAmbient(float, float);
+    public void handleAmbient();
+    public void setLoop(boolean);
+    public void play();
+    public void stop();
+    public Raylib.Music getRlMusic();
+    public void unloadAmbient();
+}
+</code></pre>
+
+<ul>
+    <li class="oli"><code>AmbientAudio(String)</code>:
+        <p>This is the constructor of the <code>AmbientAudio</code> class. It initializes the ambient audio by setting up the audio device and loading the music stream from a specified file path. It ensures the audio device is ready and the music stream is valid.</p>
+    </li>
+
+    <li class="oli"><code>void handleAmbient(float, float, float, float)</code>:
+        <p>This method manages the ambient audio playback with optional fade-in and fade-out effects. It adjusts the volume of the music based on the playback time and the specified fade parameters.</p>
+    </li>
+
+    <li class="oli"><code>void handleAmbient(float, float)</code>:
+        <p>This is an overloaded version of the <code>handleAmbient</code> method. It provides a simpler way to manage ambient audio playback with only fade-in and fade-out effects.</p>
+    </li>
+
+    <li class="oli"><code>void handleAmbient()</code>:
+        <p>This is another overloaded version of the <code>handleAmbient</code> method. It handles ambient audio playback without any fade effects.</p>
+    </li>
+
+    <li class="oli"><code>void setLoop(boolean)</code>:
+        <p>This method sets whether the ambient audio should loop. If looping is enabled, the music will restart from the beginning once it finishes playing.</p>
+    </li>
+
+    <li class="oli"><code>void play()</code>:
+        <p>This method starts playing the ambient audio.</p>
+    </li>
+
+    <li class="oli"><code>void stop()</code>:
+        <p>This method stops the playback of the ambient audio.</p>
+    </li>
+
+    <li class="oli"><code>Raylib.Music getRlMusic()</code>:
+        <p>This method returns the underlying <code>Raylib.Music</code> object used for managing the audio stream. It allows direct interaction with the music stream if needed.</p>
+    </li>
+
+    <li class="oli"><code>void unloadAmbient()</code>:
+        <p>This method unloads the ambient audio, freeing up resources associated with the music stream.</p>
+    </li>
+</ul>
+
+<h3 id="spatialaudio">Spatial Audio</h3>
+Spatial audio is a technique for simulating real audio that allows you to convey sound position and loudness. That is, you will hear the sound in the right earphone if the sound is to your right.
+
+<pre><code lang="highlightjs-java">public class SpatialAudio {
+    public SpatialAudio(SpatialAudioData);
+    public void play();
+    public void stop();
+    public void handleSpatiality(Vector3Df, float, boolean);
+    public float calcDistVol(Vector3Df);
+    public float calcDistPan(float, float, boolean);
+    public Raylib.Sound getAudio();
+    public void setAudioPos(Vector3Df);
+    public Vector3Df getAudioPos();
+    public float getAudioStartVol();
+    public float getAudioCurrVol();
+    public float getAudioCurrPan();
+    public void setAudioLoudness(float);
+    public float getAudioLoudness();
+    public void setAudioPSens(float);
+    public float getAudioPSens();
+    public void unloadSound();
+    public static Vector3Df getCamPos(Raylib.Camera3D);
+}
+</code></pre>
+
+<ul>
+    <li class="oli"><code>SpatialAudio(SpatialAudioData)</code>:
+        <p>This constructor initializes the <code>SpatialAudio</code> object with the given spatial audio data. It ensures the audio device is ready and the sound data is valid.</p>
+    </li>
+
+    <li class="oli"><code>void play()</code>:
+        <p>This method starts playing the spatial audio.</p>
+    </li>
+
+    <li class="oli"><code>void stop()</code>:
+        <p>This method stops the playback of the spatial audio.</p>
+    </li>
+
+    <li class="oli"><code>void handleSpatiality(Vector3Df, float, boolean)</code>:
+        <p>This method adjusts the volume and pan of the audio based on the camera position and orientation. It updates the spatial audio data to reflect these changes.</p>
+    </li>
+
+    <li class="oli"><code>float calcDistVol(Vector3Df)</code>:
+        <p>This method calculates the volume of the audio based on the distance between the audio source and the camera position. The volume decreases as the distance increases.</p>
+    </li>
+
+    <li class="oli"><code>float calcDistPan(float, float, boolean)</code>:
+        <p>This method calculates the pan (left-right balance) of the audio based on the camera's position and target orientation. It can apply an inverse effect if specified.</p>
+    </li>
+
+    <li class="oli"><code>Raylib.Sound getAudio()</code>:
+        <p>This method returns the underlying <code>Raylib.Sound</code> object used for managing the audio stream.</p>
+    </li>
+
+    <li class="oli"><code>void setAudioPos(Vector3Df)</code>:
+        <p>This method sets the position of the audio source in the 3D world.</p>
+    </li>
+
+    <li class="oli"><code>Vector3Df getAudioPos()</code>:
+        <p>This method returns the current position of the audio source in the 3D world.</p>
+    </li>
+
+    <li class="oli"><code>float getAudioStartVol()</code>:
+        <p>This method returns the initial volume of the audio.</p>
+    </li>
+
+    <li class="oli"><code>float getAudioCurrVol()</code>:
+        <p>This method returns the current volume of the audio, which may have been adjusted based on the distance to the camera.</p>
+    </li>
+
+    <li class="oli"><code>float getAudioCurrPan()</code>:
+        <p>This method returns the current pan (left-right balance) of the audio, which may have been adjusted based on the camera's position and orientation.</p>
+    </li>
+
+    <li class="oli"><code>void setAudioLoudness(float)</code>:
+        <p>This method sets the loudness level of the audio. Loudness affects how the volume is perceived at different distances.</p>
+    </li>
+
+    <li class="oli"><code>float getAudioLoudness()</code>:
+        <p>This method returns the current loudness level of the audio.</p>
+    </li>
+
+    <li class="oli"><code>void setAudioPSens(float)</code>:
+        <p>This method sets the sensitivity of the audio's pan effect, determining how responsive the pan adjustment is to changes in position.</p>
+    </li>
+
+    <li class="oli"><code>float getAudioPSens()</code>:
+        <p>This method returns the current sensitivity of the audio's pan effect.</p>
+    </li>
+
+    <li class="oli"><code>void unloadSound()</code>:
+        <p>This method unloads the sound data, freeing up resources associated with the audio stream.</p>
+    </li>
+
+    <li class="oli"><code>static Vector3Df getCamPos(Raylib.Camera3D)</code>:
+        <p>This method returns the position of the camera as a <code>Vector3Df</code> object, which can be used for spatial audio calculations.</p>
+    </li>
+</ul>
+
+<h3 id="spatialaudiodata">Spatial Audio Data</h3>
+Class used for containing spatial audio settings.
+
+<pre><code lang="highlightjs-java">public class SpatialAudioData {
+    public static final float START_VOL;
+    public static final float MIN_VOL;
+    public static final float MAX_VOL;
+    public static final float START_PAN;
+    public static final float RIGHT_PAN;
+    public static final float CENTER_PAN;
+    public static final float LEFT_PAN;
+    public static final float DEFAULT_LOUDNESS;
+    public static final float DEFAULT_PSENS;
+
+    public SpatialAudioData(String, Vector3Df, float, float, float, float);
+    public Raylib.Sound getAudio();
+    public void setAudioPos(Vector3Df);
+    public Vector3Df getAudioPos();
+    public void setAudioCurrVol(float);
+    public float getAudioCurrVol();
+    public void setAudioCurrPan(float);
+    public float getAudioCurrPan();
+    public void setAudioLoudness(float);
+    public float getAudioLoudness();
+    public void setAudioPSens(float);
+    public float getAudioPSens();
+}
+</code></pre>
+
+<ul>
+    <li class="oli"><code>public static final float START_VOL</code>:
+        <p>This constant represents the initial volume of the audio.</p>
+    </li>
+
+    <li class="oli"><code>public static final float MIN_VOL</code>:
+        <p>This constant represents the minimum possible volume of the audio.</p>
+    </li>
+
+    <li class="oli"><code>public static final float MAX_VOL</code>:
+        <p>This constant represents the maximum possible volume of the audio.</p>
+    </li>
+
+    <li class="oli"><code>public static final float START_PAN</code>:
+        <p>This constant represents the initial pan position of the audio.</p>
+    </li>
+
+    <li class="oli"><code>public static final float RIGHT_PAN</code>:
+        <p>This constant represents the right pan position of the audio.</p>
+    </li>
+
+    <li class="oli"><code>public static final float CENTER_PAN</code>:
+        <p>This constant represents the center pan position of the audio.</p>
+    </li>
+
+    <li class="oli"><code>public static final float LEFT_PAN</code>:
+        <p>This constant represents the left pan position of the audio.</p>
+    </li>
+
+    <li class="oli"><code>public static final float DEFAULT_LOUDNESS</code>:
+        <p>This constant represents the default loudness of the audio.</p>
+    </li>
+
+    <li class="oli"><code>public static final float DEFAULT_PSENS</code>:
+        <p>This constant represents the default pan sensitivity of the audio.</p>
+    </li>
+
+    <li class="oli"><code>SpatialAudioData(String, Vector3Df, float, float, float, float)</code>:
+        <p>This constructor initializes the spatial audio data with the given parameters. It ensures the start volume and start pan are within valid ranges and loads the audio from the specified path.</p>
+    </li>
+
+    <li class="oli"><code>Raylib.Sound getAudio()</code>:
+        <p>This method returns the underlying <code>Raylib.Sound</code> object used for managing the audio stream.</p>
+    </li>
+
+    <li class="oli"><code>void setAudioPos(Vector3Df)</code>:
+        <p>This method sets the position of the audio source in the 3D world.</p>
+    </li>
+
+    <li class="oli"><code>Vector3Df getAudioPos()</code>:
+        <p>This method returns the current position of the audio source in the 3D world.</p>
+    </li>
+
+    <li class="oli"><code>void setAudioCurrVol(float)</code>:
+        <p>This method sets the current volume of the audio.</p>
+    </li>
+
+    <li class="oli"><code>float getAudioCurrVol()</code>:
+        <p>This method returns the current volume of the audio.</p>
+    </li>
+
+    <li class="oli"><code>void setAudioCurrPan(float)</code>:
+        <p>This method sets the current pan position of the audio.</p>
+    </li>
+
+    <li class="oli"><code>float getAudioCurrPan()</code>:
+        <p>This method returns the current pan position of the audio.</p>
+    </li>
+
+    <li class="oli"><code>void setAudioLoudness(float)</code>:
+        <p>This method sets the loudness level of the audio. Loudness affects how the volume is perceived at different distances.</p>
+    </li>
+
+    <li class="oli"><code>float getAudioLoudness()</code>:
+        <p>This method returns the current loudness level of the audio.</p>
+    </li>
+
+    <li class="oli"><code>void setAudioPSens(float)</code>:
+        <p>This method sets the sensitivity of the audio's pan effect, determining how responsive the pan adjustment is to changes in position.</p>
+    </li>
+
+    <li class="oli"><code>float getAudioPSens()</code>:
+        <p>This method returns the current sensitivity of the audio's pan effect.</p>
+    </li>
+</ul>
+
+<h1 id="ivui">IVUI</h1>
+...
+
+<h1 id="particles">Particles</h1>
+...
+
+<h1 id="spps">SPPS</h1>
+...
+
+<h1 id="structs">Structures</h1>
+<p>Structures module provides ready structures to work with, for example Q-Tree.</p>
+
+<p>Structures module contains following files:</p>
+<ul>
+    <li class="jli"><code><a href="#quadtree" class="a_filejump">QuadTree.java</a></code></li>
+</ul>
+
+<h3 id="quadtree">Quad Tree.</h3>
+VSDK implementation of QuadTree. What is a quadtree?:
+
+A quadtree is a tree data structure in which each internal node has exactly
+four children. Quadtrees are the two-dimensional analog of octrees and are
+most often used to partition a two-dimensional space by recursively
+subdividing it into four quadrants or regions. The data associated with a
+leaf cell varies by application, but the leaf cell represents a "unit of
+interesting spatial information".
+
+In computer graphics and spatial indexing, quadtrees are incredibly useful
+for efficiently managing and querying spatial information. They are often
+used in applications such as image compression, where regions of an image
+are subdivided to identify areas of uniform color or detail. Quadtrees are
+also fundamental in collision detection algorithms in gaming and simulations,
+where the space can be partitioned to quickly locate objects that may
+intersect or come into contact.
+
+The VSDK implementation of QuadTree is designed to handle a fixed maximum
+number of points before splitting into subnodes, allowing it to efficiently
+manage spatial data even as the dataset grows. This implementation supports
+clear operations, dynamic splitting, and efficient retrieval of points,
+making it a versatile tool for developers working with spatial data.
+
+<pre><code lang="highlightjs-java">public class QuadTree {
+    public static final int MAX_LEVELS = 5;
+    public static final int MAX_POINTS = 4;
+
+    public List<int[]> points;
+    public QuadTree[] nodes;
+    public int level;
+    public int[] bounds;
+
+    public QuadTree(int, int[]);
+    public void clear();
+    public void split();
+    private int getIndex(int[]);
+    public void insert(int[]);
+    public List<int[]> retrieve(List<int[]>, int[]);
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public static final int MAX_LEVELS</code>:
+        <p>This constant represents the maximal number of recursive subdivisions.</p>
+    </li>
+
+    <li class="oli"><code>public static final int MAX_POINTS</code>:
+        <p>This constant represents the maximum number of points a node can hold before it splits.</p>
+    </li>
+
+    <li class="oli"><code>public List<int[]> points</code>:
+        <p>This field represents the container for points within the node.</p>
+    </li>
+
+    <li class="oli"><code>public QuadTree[] nodes</code>:
+        <p>This field represents the four child nodes of the current node.</p>
+    </li>
+
+    <li class="oli"><code>public int level</code>:
+        <p>This field represents the current level of the node within the quadtree.</p>
+    </li>
+
+    <li class="oli"><code>public int[] bounds</code>:
+        <p>This field represents the bounding box of the current node.</p>
+    </li>
+
+    <li class="oli"><code>public QuadTree(int, int[])</code>:
+        <p>This constructor initializes the quadtree node with a specified level and bounds.</p>
+    </li>
+
+    <li class="oli"><code>public void clear()</code>:
+        <p>This method clears all points and child nodes in the quadtree.</p>
+    </li>
+
+    <li class="oli"><code>public void split()</code>:
+        <p>This method splits the current node into four subnodes, dividing the bounding box into four equal quadrants.</p>
+    </li>
+
+    <li class="oli"><code>private int getIndex(int[])</code>:
+        <p>This method determines which quadrant of the current node's bounds contains the given point.</p>
+    </li>
+
+    <li class="oli"><code>public void insert(int[])</code>:
+        <p>This method inserts a point into the quadtree, splitting the node if it exceeds capacity.</p>
+    </li>
+
+    <li class="oli"><code>public List<int[]> retrieve(List<int[]>, int[])</code>:
+        <p>This method retrieves all points that could collide with the given point.</p>
+    </li>
+</ul>
+
+<h1 id="utils">Utilities</h1>
+...
+
+<h1 id="vectors">Vectors</h1>
+...
+
+<h1 id="vrender">VRender</h1>
+...
