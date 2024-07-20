@@ -1,4 +1,4 @@
-<h2>About</h2>
+<h2>Description</h2>
 VSDK provides 5 shaders for user-use (Apfelstrudel Technologien shaders aren't counted) (<code>VSDK_V0.0.0.4-ALPHA/DEV_PUBLISH</code>).
 
 <ul>
@@ -9,7 +9,7 @@ VSDK provides 5 shaders for user-use (Apfelstrudel Technologien shaders aren't c
     <li class="sli"><code><a href="#texbfix" class="a_filejump">texel_bleeding_fix2d.vs</a></code></li>
 </ul>
 
-<h3 id="fbump">Fragment Bump Mapping</h3>
+<h1 id="fbump">Fragment Bump Mapping</h1>
 Fragment shader used for rendering bump map.
 
 <pre><code lang="highlightjs-glsl">#version 330
@@ -44,7 +44,7 @@ void main() {
     finalColor = vec4((ambientValue * texCol) + (diffuse * texCol) + (specular * vec3(1.0, 1.0, 1.0)), 1.0);
 }</code></pre>
 
-<h3 id="vbump">Vertex Bump Mapping</h3>
+<h1 id="vbump">Vertex Bump Mapping</h1>
 Vertex shader used for rendering bump map.
 
 <pre><code lang="highlightjs-glsl">#version 330
@@ -79,7 +79,7 @@ void main() {
     gl_Position = mvp * vec4(vertexPosition, 1.0);
 }</code></pre>
 
-<h3 id="li2d"">Loading Icon 2D</h3>
+<h1 id="li2d"">Loading Icon 2D</h1>
 Fragment shader for creating vertical loading icon effect by manipulating with RGB. Mostly used in IVUI.
 
 <pre><code lang="highlightjs-glsl">#version 330
@@ -102,7 +102,7 @@ void main() {
     finalColor = texColor * fragColor;
 }</code></pre>
 
-<h3 id="vign2d">Vignette 2D</h3>
+<h1 id="vign2d">Vignette 2D</h1>
 Fragment shader used for rendering vignette. Allows to manipulate with vignette color, radius, blur, position. Can be used for bleeding effect for example.<br>
 You can simplify using of this shader by using <code>Source::VRender::Vignette2D</code>.
 
@@ -124,7 +124,7 @@ void main() {
     finalColor = mix(texture(texture0, fragTexCoord), vec4(vColor, 1.0), smoothstep(vRadius, vRadius + vBlur, distance(fragTexCoord, vec2(vPosX, vPosY))));
 }</code></pre>
 
-<h3 id="texbfix">Texture bleeding 2D fix</h3>
+<h1 id="texbfix">Texture bleeding 2D fix</h1>
 Fragment shader used to fix texture bleeding. Mostly used in IVUI. See: <a href="https://github.com/raysan5/raylib/issues/3247">Github Issue</a>.
 
 <pre><code lang="highlightjs-glsl">#version 330

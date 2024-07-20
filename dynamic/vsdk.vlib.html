@@ -1,0 +1,532 @@
+<h2>Description</h2>
+VLib (Violent Library) is a VSDK module designed to simplify non-game development (can mostly be used outside the VSDK).
+
+<ul>
+    <li class="pli"><a href="#ezxml" class="section_link">VXML</a></li>
+    <li class="pli"><a href="#vinet" class="section_link">VINet</a></li>
+</ul>
+
+<h1 id="ezxml">VXML (EzXML)</h1>
+VXML simplifies using of XML in Java, and provides reading/writing XML in few lines.
+
+VXML module contains following files:
+<ul>
+    <li class="jli"><code><a href="#zxmlf" class="a_filejump">EzXML.java</a></code></li>
+</ul>
+
+<h3 id="zxmlf">EzXML</h3>
+
+<pre><code lang="highlightjs-java">public class EzXML {
+    public static final String NEW_DOCUMENT = "NEW_DOCUMENT";
+    public static final int OK = 0;
+    public static final int PARSER_CONF_EXC = 1;
+    public static final int SAX_EXC = 2;
+    public static final int IO_EXC = 3;
+    public static final int IS_NULL = 4;
+    public static final int WRITER_TRANSFORMER_EXC = 5;
+    public static final int WRITER_TRANSFORMER_CONF_EXC = 6;
+
+    public int new_();
+    public int parseDoc(String);
+    public NodeList rootGetElemsByTag(String);
+    public Element[] rootArrayTreeByTag(String);
+    public Element rootTreeElementByTag(String, int);
+    public DocumentBuilderFactory getFactory();
+    public DocumentBuilder getDocumentBuilder();
+    public Document getDocument();
+    public Element getRoot();
+    public XMLWriter_ getWriter();
+    public static Node[] nodeListToArray(NodeList);
+    public static Element[] nodeListToElemArray(NodeList);
+
+    public static class XMLWriter_ {
+        protected int new_();
+        protected void setDoc(Document);
+        public Element create(String);
+        public Element append(String, Element);
+        public Element append(String, Document);
+        public Element append(String);
+        public void appendElement(Element, Element);
+        public void appendElement(Element, Document);
+        public int addDocComment(String, boolean, boolean);
+        public int addDocComment(String);
+        public int write(String);
+        public TransformerFactory getFactory();
+        public Transformer getTransformer();
+    }
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public static final String NEW_DOCUMENT</code>:
+        <p>This constant represents a flag to indicate the creation of a new document.</p>
+    </li>
+    <li class="oli"><code>public static final int OK</code>:
+        <p>This constant represents the success code for various operations.</p>
+    </li>
+    <li class="oli"><code>public static final int PARSER_CONF_EXC</code>:
+        <p>This constant represents an error code for parser configuration exceptions.</p>
+    </li>
+    <li class="oli"><code>public static final int SAX_EXC</code>:
+        <p>This constant represents an error code for SAX exceptions.</p>
+    </li>
+    <li class="oli"><code>public static final int IO_EXC</code>:
+        <p>This constant represents an error code for I/O exceptions.</p>
+    </li>
+    <li class="oli"><code>public static final int IS_NULL</code>:
+        <p>This constant represents an error code for null object references.</p>
+    </li>
+    <li class="oli"><code>public static final int WRITER_TRANSFORMER_EXC</code>:
+        <p>This constant represents an error code for transformer exceptions.</p>
+    </li>
+    <li class="oli"><code>public static final int WRITER_TRANSFORMER_CONF_EXC</code>:
+        <p>This constant represents an error code for transformer configuration exceptions.</p>
+    </li>
+    <li class="oli"><code>public int new_()</code>:
+        <p>This method initializes a new document builder and writer.</p>
+    </li>
+    <li class="oli"><code>public int parseDoc(String)</code>:
+        <p>This method parses an XML document from a file or creates a new document.</p>
+    </li>
+    <li class="oli"><code>public NodeList rootGetElemsByTag(String)</code>:
+        <p>This method retrieves root elements by their tag name.</p>
+    </li>
+    <li class="oli"><code>public Element[] rootArrayTreeByTag(String)</code>:
+        <p>This method converts a NodeList of root elements into an array of elements by tag name.</p>
+    </li>
+    <li class="oli"><code>public Element rootTreeElementByTag(String, int)</code>:
+        <p>This method retrieves a specific root element by tag name and index.</p>
+    </li>
+    <li class="oli"><code>public DocumentBuilderFactory getFactory()</code>:
+        <p>This method returns the document builder factory instance.</p>
+    </li>
+    <li class="oli"><code>public DocumentBuilder getDocumentBuilder()</code>:
+        <p>This method returns the document builder instance.</p>
+    </li>
+    <li class="oli"><code>public Document getDocument()</code>:
+        <p>This method returns the parsed document instance.</p>
+    </li>
+    <li class="oli"><code>public Element getRoot()</code>:
+        <p>This method returns the root element of the document.</p>
+    </li>
+    <li class="oli"><code>public XMLWriter_ getWriter()</code>:
+        <p>This method returns the XML writer instance.</p>
+    </li>
+    <li class="oli"><code>public static Node[] nodeListToArray(NodeList)</code>:
+        <p>This method converts a NodeList to an array of nodes.</p>
+    </li>
+    <li class="oli"><code>public static Element[] nodeListToElemArray(NodeList)</code>:
+        <p>This method converts a NodeList to an array of elements.</p>
+    </li>
+    <li class="oli"><code>public static class XMLWriter_</code>:
+        <p>This inner class provides methods to write and manipulate XML documents.</p>
+    </li>
+    <li class="oli"><code>protected int new_()</code>:
+        <p>This method initializes a new transformer for writing XML.</p>
+    </li>
+    <li class="oli"><code>protected void setDoc(Document)</code>:
+        <p>This method sets the document to be written by the XML writer.</p>
+    </li>
+    <li class="oli"><code>public Element create(String)</code>:
+        <p>This method creates a new element in the document.</p>
+    </li>
+    <li class="oli"><code>public Element append(String, Element)</code>:
+        <p>This method creates and appends a new element to a parent element.</p>
+    </li>
+    <li class="oli"><code>public Element append(String, Document)</code>:
+        <p>This method creates and appends a new element to the document.</p>
+    </li>
+    <li class="oli"><code>public Element append(String)</code>:
+        <p>This method creates and appends a new element to the document root.</p>
+    </li>
+    <li class="oli"><code>public void appendElement(Element, Element)</code>:
+        <p>This method appends an existing element to a parent element.</p>
+    </li>
+    <li class="oli"><code>public void appendElement(Element, Document)</code>:
+        <p>This method appends an existing element to the document.</p>
+    </li>
+    <li class="oli"><code>public int addDocComment(String, boolean, boolean)</code>:
+        <p>This method adds a comment before the root element in the document with optional newlines.</p>
+    </li>
+    <li class="oli"><code>public int addDocComment(String)</code>:
+        <p>This method adds a comment before the root element in the document.</p>
+    </li>
+    <li class="oli"><code>public int write(String)</code>:
+        <p>This method writes the XML document to a file.</p>
+    </li>
+    <li class="oli"><code>public TransformerFactory getFactory()</code>:
+        <p>This method returns the transformer factory instance.</p>
+    </li>
+    <li class="oli"><code>public Transformer getTransformer()</code>:
+        <p>This method returns the transformer instance.</p>
+    </li>
+</ul>
+
+<h1 id="vinet">VINet (Violent Immediate mode Networking)</h1>
+A thread-friendly, no-bloat, event-driven, and asynchronous TCP server for Violent Immediate mode Networking (Vinet) that is designed to be extremely easy and simple to use. The server manages client connections, communication, and various events such as client connection, disconnection, data reception, and exceptions.<br><br>
+
+VINet module contains following files:
+<ul>
+    <li class="jli"><code><a href="#vtou" class="a_filejump">VinetTransferableObjectUtility.java</a></code></li>
+    <li class="jli"><code><a href="#tvce" class="a_filejump">TCP/VinetClientEventsTCP.java</a></code></li>
+    <li class="jli"><code><a href="#tvcs" class="a_filejump">TCP/VinetClientServer.java</a></code></li>
+    <li class="jli"><code><a href="#tvc" class="a_filejump">TCP/VinetClientTCP.java</a></code></li>
+    <li class="jli"><code><a href="#tvsc" class="a_filejump">TCP/VinetServerClient.java</a></code></li>
+    <li class="jli"><code><a href="#tvse" class="a_filejump">TCP/VinetServerEventsTCP.java</a></code></li>
+    <li class="jli"><code><a href="#tvs" class="a_filejump">TCP/VinetServerTCP.java</a></code></li>
+</ul>
+
+<h3 id="vtou">Transferable Object Utility</h3>
+Utility used to encrypt/decrypt data to send.
+
+<pre><code lang="highlightjs-java">public class VinetTransferableObjectUtility {
+    public static &lt;T&gt; String assemble(T ...objects);
+    public static String[] disassemble(String);
+    public static boolean isAssembled(String);
+}
+</code></pre>
+
+<ul>
+    <li class="oli"><code>public static &lt;T&gt; String assemble(T ...objects)</code>:
+        <p>This method assembles a string from the given objects, replaces single quotes, encodes it, and returns the result.</p>
+    </li>
+
+    <li class="oli"><code>public static String[] disassemble(String)</code>:
+        <p>This method decodes an assembled string and splits it back into the original objects.</p>
+    </li>
+
+    <li class="oli"><code>public static boolean isAssembled(String)</code>:
+        <p>This method checks if a string has been assembled by verifying its signature prefix.</p>
+    </li>
+</ul>
+
+<h3 id="tvce">TCP Client Events</h3>
+Interface used as callback for client events.
+
+<pre><code lang="highlightjs-java">public interface VinetClientEventsTCP {
+    void connection(VinetClientServer, VinetClientTCP);
+    void disconnection(VinetClientServer, VinetClientTCP);
+    void receive(String, VinetClientServer, VinetClientTCP);
+    void event(String, String, VinetClientServer, VinetClientTCP);
+    void exception(Exception, VinetClientTCP);
+    void lost(VinetClientTCP);
+    void timeout(VinetClientTCP);
+}
+</code></pre>
+<ul>
+    <li class="oli"><code>void connection(VinetClientServer, VinetClientTCP)</code>:
+        <p>This method is triggered when the client connects to the server.</p>
+    </li>
+    <li class="oli"><code>void disconnection(VinetClientServer, VinetClientTCP)</code>:
+        <p>This method is triggered when the client disconnects from the server.</p>
+    </li>
+    <li class="oli"><code>void receive(String, VinetClientServer, VinetClientTCP)</code>:
+        <p>This method is triggered when the client receives data from the server.</p>
+    </li>
+    <li class="oli"><code>void event(String, String, VinetClientServer, VinetClientTCP)</code>:
+        <p>This method is triggered when an event is toggled by the server, providing the event name and data.</p>
+    </li>
+    <li class="oli"><code>void exception(Exception, VinetClientTCP)</code>:
+        <p>This method is triggered when an exception is raised on the client side in the `connect` method.</p>
+    </li>
+    <li class="oli"><code>void lost(VinetClientTCP)</code>:
+        <p>This method is triggered when the client loses connection to the server.</p>
+    </li>
+    <li class="oli"><code>void timeout(VinetClientTCP)</code>:
+        <p>This method is triggered when the connection times out.</p>
+    </li>
+</ul>
+
+<h3 id="tvcs">Client representation of server</h3>
+Class usually transfered as argument in events used to represent server.
+
+<pre><code lang="highlightjs-java">public class VinetClientServer {
+    public void answer(String);
+    public boolean validOut();
+    public Socket getServer();
+    public PrintWriter getServerOut();
+    public void close();
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public void answer(String)</code>:
+        <p>Sends data to the server if the PrintWriter is valid.</p>
+    </li>
+
+    <li class="oli"><code>public boolean validOut()</code>:
+        <p>Checks if the PrintWriter is valid.</p>
+    </li>
+
+    <li class="oli"><code>public Socket getServer()</code>:
+        <p>Retrieves the server socket.</p>
+    </li>
+
+    <li class="oli"><code>public PrintWriter getServerOut()</code>:
+        <p>Retrieves the PrintWriter.</p>
+    </li>
+
+    <li class="oli"><code>public void close()</code>:
+        <p>Closes the PrintWriter.</p>
+    </li>
+</ul>
+
+<h3 id="tvc">TCP Client</h3>
+Main class used to connect to the server.
+
+<pre><code lang="highlightjs-java">public class VinetClientTCP {
+    public VinetClientTCP(VinetClientEventsTCP, String, int, int);
+    public void send(String);
+    public void emit(String, String);
+    public void disconnect();
+    public boolean isConnected();
+    public String getHost();
+    public int getPort();
+    public int getTimeout();
+    public InetSocketAddress getSocketAddress();
+    public Socket getSocket();
+    public VinetClientServer getServerRepr();
+    public void setActive(boolean);
+    public boolean isActive();
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public VinetClientTCP(VinetClientEventsTCP, String, int, int)</code>:
+        <p>Initializes the TCP client with event handler, host, port, and connection timeout.</p>
+    </li>
+
+    <li class="oli"><code>public void send(String)</code>:
+        <p>Sends a message to the server.</p>
+    </li>
+
+    <li class="oli"><code>public void emit(String, String)</code>:
+        <p>Emits an event with a specified name and data.</p>
+    </li>
+
+    <li class="oli"><code>public void disconnect()</code>:
+        <p>Disconnects the client from the server.</p>
+    </li>
+
+    <li class="oli"><code>public boolean isConnected()</code>:
+        <p>Checks if the client is currently connected to the server.</p>
+    </li>
+
+    <li class="oli"><code>public String getHost()</code>:
+        <p>Returns the host address of the server.</p>
+    </li>
+
+    <li class="oli"><code>public int getPort()</code>:
+        <p>Returns the port number used for the connection.</p>
+    </li>
+
+    <li class="oli"><code>public int getTimeout()</code>:
+        <p>Returns the connection timeout value.</p>
+    </li>
+
+    <li class="oli"><code>public InetSocketAddress getSocketAddress()</code>:
+        <p>Returns the socket address for the connection.</p>
+    </li>
+
+    <li class="oli"><code>public Socket getSocket()</code>:
+        <p>Returns the underlying socket used for the connection.</p>
+    </li>
+
+    <li class="oli"><code>public VinetClientServer getServerRepr()</code>:
+        <p>Returns the server representation for the client.</p>
+    </li>
+
+    <li class="oli"><code>public void setActive(boolean)</code>:
+        <p>Sets the active state of the client.</p>
+    </li>
+
+    <li class="oli"><code>public boolean isActive()</code>:
+        <p>Checks if the client is currently active.</p>
+    </li>
+</ul>
+
+<h3 id="tvsc">Server representation of a client</h3>
+Class usually transfered as argument in events used to represent client.
+
+<pre><code lang="highlightjs-java">public class VinetServerClient {
+    public void send(String);
+    public void disconnect() throws IOException;
+    public String getIP();
+    public int getPort();
+    public Socket getClient();
+    public PrintWriter getClientOut();
+    public String getClientIdentifier();
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public void send(String)</code>:
+        <p>Sends data to the client.</p>
+    </li>
+
+    <li class="oli"><code>public void disconnect() throws IOException</code>:
+        <p>Disconnects the client from the server.</p>
+    </li>
+
+    <li class="oli"><code>public String getIP()</code>:
+        <p>Returns the IP address of the client.</p>
+    </li>
+
+    <li class="oli"><code>public int getPort()</code>:
+        <p>Returns the port number used by the client.</p>
+    </li>
+
+    <li class="oli"><code>public Socket getClient()</code>:
+        <p>Returns the client socket.</p>
+    </li>
+
+    <li class="oli"><code>public PrintWriter getClientOut()</code>:
+        <p>Returns the PrintWriter used to send data to the client.</p>
+    </li>
+
+    <li class="oli"><code>public String getClientIdentifier()</code>:
+        <p>Returns the identifier of the client.</p>
+    </li>
+</ul>
+
+<h3 id="tvse">TCP Server Events</h3>
+Interface used as callback for server events.
+
+<pre><code lang="highlightjs-java">public interface VinetServerEventsTCP {
+    void start(VinetServerTCP);
+    void end(VinetServerTCP);
+    void connection(VinetServerClient, VinetServerTCP);
+    void disconnection(VinetServerClient, VinetServerTCP);
+    void receive(String, VinetServerClient, VinetServerTCP);
+    void event(String, String, VinetServerClient, VinetServerTCP);
+    void exception(Exception, VinetServerTCP);
+    void lost(VinetServerClient, VinetServerTCP);
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>void start(VinetServerTCP)</code>:
+        <p>Triggered when the server starts.</p>
+    </li>
+
+    <li class="oli"><code>void end(VinetServerTCP)</code>:
+        <p>Triggered when the server stops.</p>
+    </li>
+
+    <li class="oli"><code>void connection(VinetServerClient, VinetServerTCP)</code>:
+        <p>Triggered when a new client connects to the server.</p>
+    </li>
+
+    <li class="oli"><code>void disconnection(VinetServerClient, VinetServerTCP)</code>:
+        <p>Triggered when a client disconnects from the server.</p>
+    </li>
+
+    <li class="oli"><code>void receive(String, VinetServerClient, VinetServerTCP)</code>:
+        <p>Triggered when the server receives data from a client.</p>
+    </li>
+
+    <li class="oli"><code>void event(String, String, VinetServerClient, VinetServerTCP)</code>:
+        <p>Triggered when a client triggers an event.</p>
+    </li>
+
+    <li class="oli"><code>void exception(Exception, VinetServerTCP)</code>:
+        <p>Triggered when an exception is raised on the server side.</p>
+    </li>
+
+    <li class="oli"><code>void lost(VinetServerClient, VinetServerTCP)</code>:
+        <p>Triggered when a client leaves the server without disconnecting properly.</p>
+    </li>
+</ul>
+
+<h3 id="tvs">TCP Server</h3>
+Main class used to create the server.
+
+<pre><code lang="highlightjs-java">public class VinetServerTCP {
+    public VinetServerTCP(VinetServerEventsTCP, int) throws IOException;
+    public void send(String, VinetServerClient);
+    public void emit(String, String, VinetServerClient);
+    public void broadcast(String);
+    public void broadcastEvent(String, String);
+    public void disconnect(VinetServerClient);
+    public void stop();
+    public VinetServerClient getClient(int);
+    public boolean hasClient(VinetServerClient);
+    public void registerVisitor(VinetServerClient);
+    public VinetServerClient getVisitor(String);
+    public boolean hadVisitor(String);
+    public String getVisitorIdentifier(String);
+    public ServerSocket getServerSocket();
+    public List&lt;VinetServerClient&gt; getClients();
+    public HashMap&lt;String, String&gt; getVisitors();
+    public void setActive(boolean);
+    public boolean isActive();
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public VinetServerTCP(VinetServerEventsTCP, int)</code>:
+        <p>Initializes the server with the specified events handler and port.</p>
+    </li>
+
+    <li class="oli"><code>public void send(String, VinetServerClient)</code>:
+        <p>Sends data to a specific client.</p>
+    </li>
+
+    <li class="oli"><code>public void emit(String, String, VinetServerClient)</code>:
+        <p>Emits a custom event to a specific client.</p>
+    </li>
+
+    <li class="oli"><code>public void broadcast(String)</code>:
+        <p>Broadcasts data to all connected clients.</p>
+    </li>
+
+    <li class="oli"><code>public void broadcastEvent(String, String)</code>:
+        <p>Emits a custom event to all connected clients.</p>
+    </li>
+
+    <li class="oli"><code>public void disconnect(VinetServerClient)</code>:
+        <p>Disconnects a specific client from the server.</p>
+    </li>
+
+    <li class="oli"><code>public void stop()</code>:
+        <p>Stops the server and disconnects all clients.</p>
+    </li>
+
+    <li class="oli"><code>public VinetServerClient getClient(int)</code>:
+        <p>Retrieves a client by its index in the client list.</p>
+    </li>
+
+    <li class="oli"><code>public boolean hasClient(VinetServerClient)</code>:
+        <p>Checks if a specific client is in the client list.</p>
+    </li>
+
+    <li class="oli"><code>public void registerVisitor(VinetServerClient)</code>:
+        <p>Registers a visitor by associating its IP with a client identifier.</p>
+    </li>
+
+    <li class="oli"><code>public VinetServerClient getVisitor(String)</code>:
+        <p>Retrieves a client by its visitor IP.</p>
+    </li>
+
+    <li class="oli"><code>public boolean hadVisitor(String)</code>:
+        <p>Checks if a visitor with the given IP has connected before.</p>
+    </li>
+
+    <li class="oli"><code>public String getVisitorIdentifier(String)</code>:
+        <p>Retrieves the visitor identifier for a given IP.</p>
+    </li>
+
+    <li class="oli"><code>public ServerSocket getServerSocket()</code>:
+        <p>Gets the server socket.</p>
+    </li>
+
+    <li class="oli"><code>public List&lt;VinetServerClient&gt; getClients()</code>:
+        <p>Gets the list of connected clients.</p>
+    </li>
+
+    <li class="oli"><code>public HashMap&lt;String, String&gt; getVisitors()</code>:
+        <p>Gets the map of visitors (IP to Identifier).</p>
+    </li>
+
+    <li class="oli"><code>public void setActive(boolean)</code>:
+        <p>Sets the server's active state.</p>
+    </li>
+
+    <li class="oli"><code>public boolean isActive()</code>:
+        <p>Checks if the server is active.</p>
+    </li>
+</ul>

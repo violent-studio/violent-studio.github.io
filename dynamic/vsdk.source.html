@@ -1,4 +1,4 @@
-<h2>About</h2>
+<h2>Description</h2>
 <p>Source is the main part of the VSDK.<br>The module contains the basic benefits of the SDK, and the name of the module speaks for itself: the module must be used in source code.<br>The module contains such technologies as spatial audio, 3D particle simulation, GUI library, Bump-Mapping, and more.</p>
 
 <ul>
@@ -335,7 +335,7 @@ making it a versatile tool for developers working with spatial data.
     public static final int MAX_LEVELS = 5;
     public static final int MAX_POINTS = 4;
 
-    public List<int[]> points;
+    public List&lt;int[]&gt; points;
     public QuadTree[] nodes;
     public int level;
     public int[] bounds;
@@ -345,7 +345,7 @@ making it a versatile tool for developers working with spatial data.
     public void split();
     private int getIndex(int[]);
     public void insert(int[]);
-    public List<int[]> retrieve(List<int[]>, int[]);
+    public List&lt;int[]&gt; retrieve(List&lt;int[]&gt;, int[]);
 }</code></pre>
 
 <ul>
@@ -357,7 +357,7 @@ making it a versatile tool for developers working with spatial data.
         <p>This constant represents the maximum number of points a node can hold before it splits.</p>
     </li>
 
-    <li class="oli"><code>public List<int[]> points</code>:
+    <li class="oli"><code>public List&lt;int[]&gt; points</code>:
         <p>This field represents the container for points within the node.</p>
     </li>
 
@@ -393,7 +393,7 @@ making it a versatile tool for developers working with spatial data.
         <p>This method inserts a point into the quadtree, splitting the node if it exceeds capacity.</p>
     </li>
 
-    <li class="oli"><code>public List<int[]> retrieve(List<int[]>, int[])</code>:
+    <li class="oli"><code>public List&lt;int[]&gt; retrieve(List&lt;int[]&gt;, int[])</code>:
         <p>This method retrieves all points that could collide with the given point.</p>
     </li>
 </ul>
