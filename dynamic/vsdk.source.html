@@ -291,7 +291,275 @@ Class used for containing spatial audio settings.
 </ul>
 
 <h1 id="ivui">IVUI</h1>
+IVUI (Immediate mode Violent User Interface) is a VSDK module designed for quick user interface design, but can also be used as a full-fledged interface. It has the ability to customise interface theme, font, dozens of widgets, etc.
+
+<p>IVUI module contains following files:</p>
+<ul>
+    <li class="jli"><code><a href="#voutref" class="a_filejump">VOutRef.java</a></code></li>
+    <li class="jli"><code><a href="#vui" class="a_filejump">VUI.java</a></code></li>
+    <li class="jli"><code><a href="#vuicolor" class="a_filejump">VUIColor.java</a></code></li>
+    <li class="jli"><code><a href="#vuifont" class="a_filejump">VUIFont.java</a></code></li>
+    <li class="jli"><code><a href="#vuiio" class="a_filejump">VUIIO.java</a></code></li>
+    <li class="jli"><code><a href="#vuistyle" class="a_filejump">VUIStyle.java</a></code></li>
+</ul>
+
+<h3 id="voutref">VUI Out Reference</h3>
+Class used as reference to object, used to point IVUI to out values, like slider value, or radio button value.
+
+<pre><code lang="highlightjs-java">public class VOutRef&lt;T&gt; {
+    public VOutRef(T);
+    public VOutRef();
+    public void set(T);
+    public T get();
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public VOutRef(T)</code>:
+        <p>Initializes the reference with the specified out object.</p>
+    </li>
+
+    <li class="oli"><code>public VOutRef()</code>:
+        <p>Initializes the reference with no object (null).</p>
+    </li>
+
+    <li class="oli"><code>public void set(T)</code>:
+        <p>Sets the reference to a new object.</p>
+    </li>
+
+    <li class="oli"><code>public T get()</code>:
+        <p>Gets the current object reference.</p>
+    </li>
+</ul>
+
+<h3 id="vui">Violent User Interface</h3>
 ...
+
+<h3 id="vuicolor">VUI Color</h3>
+Class designed for simplifying work with colors.
+
+<pre><code lang="highlightjs-java">public class VUIColor {
+    public VUIColor(int, int, int, int);
+    public int get(char);
+    public void set(char, int);
+    public Raylib.Color toRlCol();
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public VUIColor(int, int, int, int)</code>:
+        <p>Creates a new VUI color with specified red, green, blue, and alpha values.</p>
+    </li>
+
+    <li class="oli"><code>public int get(char)</code>:
+        <p>Gets the color component (red, green, blue, or alpha) based on the specified character.</p>
+    </li>
+
+    <li class="oli"><code>public void set(char, int)</code>:
+        <p>Sets the color component (red, green, blue, or alpha) to a new value based on the specified character.</p>
+    </li>
+
+    <li class="oli"><code>public Raylib.Color toRlCol()</code>:
+        <p>Casts the VUIColor to a Raylib Color.</p>
+    </li>
+</ul>
+
+<h3 id="vuifont">VUI Font</h3>
+Class designated for simplifying work with fonts (auto generates mipmaps, applies filtering, etc).
+
+<pre><code lang="highlightjs-java">public class VUIFont {
+    public VUIFont(String, boolean, boolean);
+    public Raylib.Font getFont();
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public VUIFont(String, boolean, boolean)</code>:
+        <p>Loads a VUI font from the specified path, with optional mipmaps generation and bilinear filtering.</p>
+    </li>
+
+    <li class="oli"><code>public Raylib.Font getFont()</code>:
+        <p>Returns the Raylib font object associated with this VUIFont.</p>
+    </li>
+</ul>
+
+<h3 id="vuiio">VUI IO (/ Generic utilities)</h3>
+Class designated to contain data like current style, widgets active state, etc. Also contains useful utilities.
+
+<pre><code lang="highlightjs-java">public class VUIIO {
+    public static void newCtx(VUIStyle);
+    public static boolean mouseHovers(float, float, float, float);
+    public static boolean mouseHoversText(String, float, float);
+    public static void beginDisabled();
+    public static void endDisabled();
+    public static VUIStyle getStyle();
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public static void newCtx(VUIStyle)</code>:
+        <p>Create a new IO context with the given style. If the style is null, a new default style is created.</p>
+    </li>
+
+    <li class="oli"><code>public static boolean mouseHovers(float, float, float, float)</code>:
+        <p>Check if the mouse collides with the next rectangle defined by its position and size.</p>
+    </li>
+
+    <li class="oli"><code>public static boolean mouseHoversText(String, float, float)</code>:
+        <p>Check if the mouse collides with the given text at the specified position.</p>
+    </li>
+
+    <li class="oli"><code>public static void beginDisabled()</code>:
+        <p>Disable the next widgets.</p>
+    </li>
+
+    <li class="oli"><code>public static void endDisabled()</code>:
+        <p>Enable the next widgets.</p>
+    </li>
+
+    <li class="oli"><code>public static VUIStyle getStyle()</code>:
+        <p>Get the current style.</p>
+    </li>
+</ul>
+
+<h3 id="vuistyle">VUI Style</h3>
+Class designated to contain interface theme.
+
+<pre><code lang="highlightjs-java">public class VUIStyle {
+    public static final int TEXT_ANCHOR_LEFT;
+    public static final int TEXT_ANCHOR_CENTER;
+    public static final int TEXT_ANCHOR_RIGHT;
+
+    public VUIStyle(VUIColor, VUIColor, VUIColor, VUIColor, float, float, VUIColor, int, float, VUIFont, int, VUIColor);
+    public VUIStyle();
+    public void setDefaultCol(VUIColor);
+    public VUIColor getDefaultCol();
+    public void setFocusedCol(VUIColor);
+    public VUIColor getFocusedCol();
+    public void setPressedCol(VUIColor);
+    public VUIColor getPressedCol();
+    public void setDisabledCol(VUIColor);
+    public VUIColor getDisabledCol();
+    public void setBorderThickness(float);
+    public float getBorderThickness();
+    public void setBorderRounding(float);
+    public float getBorderRounding();
+    public void setBorderColor(VUIColor);
+    public VUIColor getBorderColor();
+    public void setTextSize(int);
+    public int getTextSize();
+    public void setTextSpacing(float);
+    public float getTextSpacing();
+    public void setTextFont(VUIFont);
+    public VUIFont getTextFont();
+    public void setTextAnchor(int);
+    public int getTextAnchor();
+    public void setTextCol(VUIColor);
+    public VUIColor getTextCol();
+}</code></pre>
+
+<ul>
+    <li class="oli"><code>public VUIStyle(VUIColor, VUIColor, VUIColor, VUIColor, float, float, VUIColor, int, float, VUIFont, int, VUIColor)</code>:
+        <p>Create a new VUI style configuration with specified properties.</p>
+    </li>
+
+    <li class="oli"><code>public VUIStyle()</code>:
+        <p>Create a new VUI style configuration with default values.</p>
+    </li>
+
+    <li class="oli"><code>public void setDefaultCol(VUIColor)</code>:
+        <p>Set the default color.</p>
+    </li>
+
+    <li class="oli"><code>public VUIColor getDefaultCol()</code>:
+        <p>Get the default color.</p>
+    </li>
+
+    <li class="oli"><code>public void setFocusedCol(VUIColor)</code>:
+        <p>Set the focused color.</p>
+    </li>
+
+    <li class="oli"><code>public VUIColor getFocusedCol()</code>:
+        <p>Get the focused color.</p>
+    </li>
+
+    <li class="oli"><code>public void setPressedCol(VUIColor)</code>:
+        <p>Set the pressed color.</p>
+    </li>
+
+    <li class="oli"><code>public VUIColor getPressedCol()</code>:
+        <p>Get the pressed color.</p>
+    </li>
+
+    <li class="oli"><code>public void setDisabledCol(VUIColor)</code>:
+        <p>Set the disabled color.</p>
+    </li>
+
+    <li class="oli"><code>public VUIColor getDisabledCol()</code>:
+        <p>Get the disabled color.</p>
+    </li>
+
+    <li class="oli"><code>public void setBorderThickness(float)</code>:
+        <p>Set the border thickness.</p>
+    </li>
+
+    <li class="oli"><code>public float getBorderThickness()</code>:
+        <p>Get the border thickness.</p>
+    </li>
+
+    <li class="oli"><code>public void setBorderRounding(float)</code>:
+        <p>Set the border rounding.</p>
+    </li>
+
+    <li class="oli"><code>public float getBorderRounding()</code>:
+        <p>Get the border rounding.</p>
+    </li>
+
+    <li class="oli"><code>public void setBorderColor(VUIColor)</code>:
+        <p>Set the border color.</p>
+    </li>
+
+    <li class="oli"><code>public VUIColor getBorderColor()</code>:
+        <p>Get the border color.</p>
+    </li>
+
+    <li class="oli"><code>public void setTextSize(int)</code>:
+        <p>Set the text size.</p>
+    </li>
+
+    <li class="oli"><code>public int getTextSize()</code>:
+        <p>Get the text size.</p>
+    </li>
+
+    <li class="oli"><code>public void setTextSpacing(float)</code>:
+        <p>Set the text spacing.</p>
+    </li>
+
+    <li class="oli"><code>public float getTextSpacing()</code>:
+        <p>Get the text spacing.</p>
+    </li>
+
+    <li class="oli"><code>public void setTextFont(VUIFont)</code>:
+        <p>Set the text font.</p>
+    </li>
+
+    <li class="oli"><code>public VUIFont getTextFont()</code>:
+        <p>Get the text font.</p>
+    </li>
+
+    <li class="oli"><code>public void setTextAnchor(int)</code>:
+        <p>Set the text anchor.</p>
+    </li>
+
+    <li class="oli"><code>public int getTextAnchor()</code>:
+        <p>Get the text anchor.</p>
+    </li>
+
+    <li class="oli"><code>public void setTextCol(VUIColor)</code>:
+        <p>Set the text color.</p>
+    </li>
+
+    <li class="oli"><code>public VUIColor getTextCol()</code>:
+        <p>Get the text color.</p>
+    </li>
+</ul>
+
 
 <h1 id="particles">Particles</h1>
 ...
@@ -300,7 +568,7 @@ Class used for containing spatial audio settings.
 ...
 
 <h1 id="structs">Structures</h1>
-<p>Structures module provides ready structures to work with, for example Q-Tree.</p>
+Structures module provides ready structures to work with, for example Q-Tree.
 
 <p>Structures module contains following files:</p>
 <ul>
